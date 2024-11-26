@@ -5,11 +5,13 @@
   "main": "gulpfile.babel.js",
   "scripts": {
     "start": "gulp",
-    "build": "gulp build --production"
+    "build": "gulp build --production",
+    "build:favicon": "gulp favicon"
   },
   "author": "Foundation Yetinauts <contact@get.foundation> (https://get.foundation)",
   "license": "MIT",
   "dependencies": {
+    "express": "^4.21.1",
     "foundation-sites": "latest",
     "jquery": "^3.6.0",
     "motion-ui": "latest",
