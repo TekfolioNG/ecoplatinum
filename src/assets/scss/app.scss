@@ -87,8 +87,7 @@ $primary-color: #7CFC00;
     width: 100%;
     background-color: transparent;
     padding: 0;
-    position: sticky;
-    top: 0;
+    position: absolute;
     z-index: 1000;
 
     .grid-x {
@@ -106,24 +105,32 @@ $primary-color: #7CFC00;
                 justify-content: flex-start;
             }
 
-            .logo-ecoplatinum {
-                display: flex;
-                align-items: center;
-                max-width: 225px;
-                height: auto;
-                filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
-
-
-                img {
-                    object-fit: contain;
-                }
-            }
+                   .logo-ecoplatinum {
+                       display: flex;
+                       align-items: center;
+                       max-width: 200px;
+                       height: auto;
+                       margin-left: 20px; 
+                       padding: 5px; 
+                       background-color: rgba(255, 255, 255, 0.8); // Semi-transparent white background
+                       border-radius: 25px; // Rounded corners for a softer look
+                       box-shadow: 0 0 30px rgba(255, 255, 255, 0.2); // Soft glow effect
+                
+        
+                       img {
+                           object-fit: contain;
+                           height: 70px; // Ensure the logo retains its size
+                           width: auto; // Maintain aspect ratio
+                       }
+                   }
         }
     }
 }
 
 
 @media screen and (max-width: 39.9375em) {
+
+    
     .menu {
         padding: 0;
         display: none;
@@ -133,6 +140,7 @@ $primary-color: #7CFC00;
             display: block;
         }
     }
+
 }
 
 .menu {
@@ -458,33 +466,33 @@ $product-feature-section-divider-color: $menu-underline-from-center-bg;
 
 
     &.top-left {
-        border-right: 1px solid $product-feature-section-divider-color;
-        border-bottom: 1px solid $product-feature-section-divider-color;
+        border-right: 1px solid #ffffff;
+        border-bottom: 1px solid #ffffff;
     }
 
 
     &.top-right {
-        border-right: 1px solid $product-feature-section-divider-color;
-        border-bottom: 1px solid $product-feature-section-divider-color;
+        border-right: 1px solid #ffffff;
+        border-bottom: 1px solid #ffffff;
     }
 
 
     &.bottom-left {
-        border-right: 1px solid $product-feature-section-divider-color;
-        border-bottom: 1px solid $product-feature-section-divider-color;
+        border-right: 1px solid #ffffff;
+        border-bottom: 1px solid #ffffff;
     }
 
 
     &.bottom-right {
-        border-right: 1px solid $product-feature-section-divider-color;
-        border-bottom: 1px solid $product-feature-section-divider-color;
+        border-right: 1px solid #ffffff;
+        border-bottom: 1px solid #ffffff;
     }
 
     .feature-title {
         margin-bottom: 10px;
         line-height: 16px;
         font-size: 1.3rem;
-        color: $menu-underline-from-center-bg;
+        color: #f9f9f9;
       
     }
 
@@ -540,7 +548,7 @@ $product-feature-section-divider-color: $menu-underline-from-center-bg;
         gap: 1rem;
         padding: 1.5rem;
         border-radius: 8px;
-        background-color: #f5f5f5;
+        background-color: $menu-underline-from-center-bg;
         transition: transform 0.3s ease;
 
 
@@ -557,14 +565,14 @@ $product-feature-section-divider-color: $menu-underline-from-center-bg;
 
 
         .feature-title {
-            font-weight: bold;
+            font-weight: 600;
             margin-bottom: 0.5rem;
         }
 
 
         .feature-desc {
-            color: #333;
-            font-size: 1rem;
+            color: #eee;
+            font-size: 0.70;
         }
     }
 
@@ -712,16 +720,15 @@ $product-feature-section-divider-color: $menu-underline-from-center-bg;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    /* Increased gap between dropdowns */
     margin-top: 2rem;
 }
 
 
 .dropdown-item {
-    border: 1px solid #e0e0e0;
+    border: 1px solid $menu-underline-from-center-bg;
     border-radius: 8px;
-    background: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    background: $menu-underline-from-center-bg;
+    box-shadow: 0 2px 4px rgba(250, 248, 248, 0.05);
     transition: all 0.3s ease;
     margin-bottom: 0.5rem;
 
@@ -730,7 +737,7 @@ $product-feature-section-divider-color: $menu-underline-from-center-bg;
 
 .dropdown-item:hover {
     transform: translateX(5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(248, 246, 246, 0.1);
 }
 
 
@@ -1495,13 +1502,13 @@ $text-margin: 1rem;
 .about-us-content {
     margin: $section-padding;
     padding: $section-padding;
-    background-color: #f9f9f9;
+    background-color: $menu-underline-from-center-bg;
     border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(240, 238, 238, 0.1);
 
 
     h6 {
-        color: #813A85;
+        color: #f38bf8;
         font-size: 0.875rem;
         margin-bottom: var(--agro-space);
         letter-spacing: 0.05em;
@@ -1510,13 +1517,13 @@ $text-margin: 1rem;
 
     h2 {
         font-size: 2rem;
-        color: #000;
+        color: #ffffff;
         margin-bottom: $text-margin;
     }
 
 
     p {
-        color: #333;
+        color: #ffffff;
         line-height: 1.6;
         font-size: 1rem;
         margin-bottom: $text-margin;
@@ -1548,7 +1555,7 @@ $text-margin: 1rem;
 
 .vision-mission-values {
     padding: rem-calc(60) 0;
-    margin-top: 2rem;
+    margin-top: 1rem;
 
 
     @include breakpoint(small only) {
@@ -1791,17 +1798,17 @@ $text-color: #333;
                 justify-content: space-between;
                 align-items: center;
                 padding: 15px;
-                background-color: white;
+                background-color: $menu-underline-from-center-bg;
                 cursor: pointer;
 
                 span {
-                    font-weight: 600;
-                    color: $primary-color;
+                    font-weight: 500;
+                    color: #ffffff;
                 }
 
                 i {
-                    color: $accent-color;
-                    font-size: 1.5rem;
+                    color: #ffffff;
+                    font-size: 1.3rem;
                 }
             }
 
@@ -1905,17 +1912,17 @@ $text-color: #333;
 }
 
 .agro-container {
-    background: var(--agro-white);
+    background: $menu-underline-from-center-bg;
     padding: calc(var(--agro-space) * 2);
     max-width: 1000px;
     width: 100%;
     border-radius: var(--agro-radius);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(255, 252, 252, 0.1);
     margin: var(--agro-space) auto;
 }
 
 .agro-subtitle {
-    color: var(--agro-primary);
+    color: #f38bf8;
     text-transform: uppercase;
     font-size: 0.875rem;
     margin-bottom: var(--agro-space);
@@ -1923,13 +1930,13 @@ $text-color: #333;
 }
 
 .agro-title {
-    color: var(--agro-dark);
+    color: #ffffff;
     font-size: 2rem;
     margin-bottom: var(--agro-space);
 }
 
 .agro-content {
-    color: var(--agro-body);
+    color: #ffffff;
     line-height: 1.6;
     text-align: left;
 
