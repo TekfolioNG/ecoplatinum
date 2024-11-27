@@ -82,20 +82,22 @@ $hero-full-screen-overlay-color: hsla(140, 24%, 7%, 0.4);
 $primary-color: #7CFC00;
 
 .hover-underline-menu {
-    padding: 0;
-    height: 0px;
     width: 100%;
     background-color: transparent;
-    padding: 0;
-    position: absolute;
+    position: sticky;
+    top: 0;
     z-index: 1000;
+    padding-bottom: 0;
 
     .grid-x {
-        max-width: 100%;
-        padding: 0 1rem;
-        align-items: center;
-        margin-top: -40px;
-
+            max-width: 100%;
+            margin-bottom: 0px;
+            padding: 0 1rem;
+            align-items: center;
+            margin-top: 10px;
+            background: $green-bg;
+            
+        
         .mobile-header {
             display: flex;
             align-items: center; // Center items vertically
@@ -111,22 +113,24 @@ $primary-color: #7CFC00;
             .logo-ecoplatinum {
                 display: flex;
                 align-items: center;
-                max-width: 225px;
-                margin-left: -30px;
+                max-width: 250px;
+                margin-left: 40px;
                 height: auto;
-                filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+                margin-bottom: 0; 
+            
 
 
                 img {
                     object-fit: contain;
+                    height: 70px; 
                 }
-           
+    
             }
-                         .menu-icon {
-                             margin-right: 5px;
-                             position: relative;
-                             top: -10px;
-                         }
+                        .menu-icon {
+                            margin-right: 5px;
+                            position: relative;
+                            top: -10px;
+                    }
         }
     }
 }
@@ -137,11 +141,11 @@ $primary-color: #7CFC00;
         padding: 0;
             display: none;
             align-items: crightr;
-            position: absolute; // Add absolute positioning
-            top: 80px; // Adjust this value to move up/down as needed
-            right: 0; // Align to the right
-            width: 100%; // Full width
-            background-color: rgba(255, 255, 255, 0.9); // Optional: add a semi-transparent background
+            position: absolute;
+            top: 80px;
+            right: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
             z-index: 999;
 
         &.is-active {
@@ -155,14 +159,17 @@ $primary-color: #7CFC00;
 
 
     a {
-        color: $menu-text-color;
+        color: #481d4b;
+        font-weight: 550;
         padding: 0.5rem 1.4rem;
-        font-weight: 500;
         position: relative;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        padding-bottom: 20px;
+        font-size: 16px;
+       
+
 
         &:hover {
-            color: rgba($menu-text-color, 0.7);
+            color: rgba(#000, 0.7);
             transition: color 0.3s ease;
         }
 
@@ -173,7 +180,7 @@ $primary-color: #7CFC00;
             height: $menu-underline-from-center-border-thickness;
             bottom: 0;
             left: 50%;
-            background-color: $menu-text-color;
+            background-color: #481d4b;
             transition: all 0.3s ease;
         }
 
@@ -206,18 +213,18 @@ $primary-color: #7CFC00;
         margin: 0;
         border: none;
         box-shadow: none;
-        background-color: rgba($menu-text-color, 0.2);
-        color: $menu-text-color;
+        background-color: rgba(#333, 0.2);
+        color: #333;
         padding-left: 2rem;
         width: 100%;
 
         &::placeholder {
-            color: rgba($menu-text-color, 0.6);
+            color: rgba(#333, 0.6);
             font-size: 0.9rem;
         }
 
         &:focus {
-            background-color: rgba($menu-text-color, 0.2);
+            background-color: rgba(#333, 0.2);
         }
     }
 
@@ -228,7 +235,7 @@ $primary-color: #7CFC00;
         transform: translateY(-50%);
         width: 16px;
         height: 16px;
-        color: $menu-text-color;
+        color: #333;
         opacity: 0.9;
         pointer-events: none;
     }
