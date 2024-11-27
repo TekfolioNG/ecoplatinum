@@ -82,22 +82,21 @@ $hero-full-screen-overlay-color: hsla(140, 24%, 7%, 0.4);
 $primary-color: #7CFC00;
 
 .hover-underline-menu {
+    padding: 0;
+    height: 0px;
     width: 100%;
     background-color: transparent;
+    padding: 0;
     position: sticky;
     top: 0;
     z-index: 1000;
-    padding-bottom: 0;
 
     .grid-x {
-            max-width: 100%;
-            margin-bottom: 0px;
-            padding: 0 1rem;
-            align-items: center;
-            margin-top: 10px;
-            background: $green-bg;
-            
-        
+        max-width: 100%;
+        padding: 0 1rem;
+        align-items: center;
+        margin-top: 20px;
+
         .mobile-header {
             display: flex;
             align-items: center; // Center items vertically
@@ -105,32 +104,20 @@ $primary-color: #7CFC00;
 
             @media screen and (min-width: 40em) {
                 justify-content: flex-start;
-               
             }
-
-                    
 
             .logo-ecoplatinum {
                 display: flex;
                 align-items: center;
-                max-width: 250px;
-                margin-left: 40px;
+                max-width: 225px;
                 height: auto;
-                margin-bottom: 0; 
-            
+                filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
 
 
                 img {
                     object-fit: contain;
-                    height: 70px; 
                 }
-    
             }
-                        .menu-icon {
-                            margin-right: 5px;
-                            position: relative;
-                            top: -10px;
-                    }
         }
     }
 }
@@ -139,14 +126,8 @@ $primary-color: #7CFC00;
 @media screen and (max-width: 39.9375em) {
     .menu {
         padding: 0;
-            display: none;
-            align-items: crightr;
-            position: absolute;
-            top: 80px;
-            right: 0;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.9);
-            z-index: 999;
+        display: none;
+        align-items: center;
 
         &.is-active {
             display: block;
@@ -159,17 +140,14 @@ $primary-color: #7CFC00;
 
 
     a {
-        color: #481d4b;
-        font-weight: 550;
+        color: $menu-text-color;
         padding: 0.5rem 1.4rem;
+        font-weight: 500;
         position: relative;
-        padding-bottom: 20px;
-        font-size: 16px;
-       
-
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 
         &:hover {
-            color: rgba(#000, 0.7);
+            color: rgba($menu-text-color, 0.7);
             transition: color 0.3s ease;
         }
 
@@ -180,7 +158,7 @@ $primary-color: #7CFC00;
             height: $menu-underline-from-center-border-thickness;
             bottom: 0;
             left: 50%;
-            background-color: #481d4b;
+            background-color: $menu-text-color;
             transition: all 0.3s ease;
         }
 
@@ -213,18 +191,18 @@ $primary-color: #7CFC00;
         margin: 0;
         border: none;
         box-shadow: none;
-        background-color: rgba(#333, 0.2);
-        color: #333;
+        background-color: rgba($menu-text-color, 0.2);
+        color: $menu-text-color;
         padding-left: 2rem;
         width: 100%;
 
         &::placeholder {
-            color: rgba(#333, 0.6);
+            color: rgba($menu-text-color, 0.6);
             font-size: 0.9rem;
         }
 
         &:focus {
-            background-color: rgba(#333, 0.2);
+            background-color: rgba($menu-text-color, 0.2);
         }
     }
 
@@ -235,7 +213,7 @@ $primary-color: #7CFC00;
         transform: translateY(-50%);
         width: 16px;
         height: 16px;
-        color: #333;
+        color: $menu-text-color;
         opacity: 0.9;
         pointer-events: none;
     }
