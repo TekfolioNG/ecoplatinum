@@ -81,7 +81,6 @@ $hero-full-screen-text-color: $white;
 $hero-full-screen-overlay-color: hsla(140, 24%, 7%, 0.4);
 $primary-color: #7CFC00;
 
-
 .hover-underline-menu {
     padding: 0;
     height: 0px;
@@ -95,7 +94,7 @@ $primary-color: #7CFC00;
         max-width: 100%;
         padding: 0 1rem;
         align-items: center;
-        margin-top: -30px;
+        margin-top: -40px;
 
         .mobile-header {
             display: flex;
@@ -104,12 +103,16 @@ $primary-color: #7CFC00;
 
             @media screen and (min-width: 40em) {
                 justify-content: flex-start;
+               
             }
+
+                    
 
             .logo-ecoplatinum {
                 display: flex;
                 align-items: center;
                 max-width: 225px;
+                margin-left: -30px;
                 height: auto;
                 filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
 
@@ -117,7 +120,13 @@ $primary-color: #7CFC00;
                 img {
                     object-fit: contain;
                 }
+           
             }
+                         .menu-icon {
+                             margin-right: 5px;
+                             position: relative;
+                             top: -10px;
+                         }
         }
     }
 }
@@ -126,8 +135,14 @@ $primary-color: #7CFC00;
 @media screen and (max-width: 39.9375em) {
     .menu {
         padding: 0;
-        display: none;
-        align-items: center;
+            display: none;
+            align-items: crightr;
+            position: absolute; // Add absolute positioning
+            top: 80px; // Adjust this value to move up/down as needed
+            right: 0; // Align to the right
+            width: 100%; // Full width
+            background-color: rgba(255, 255, 255, 0.9); // Optional: add a semi-transparent background
+            z-index: 999;
 
         &.is-active {
             display: block;
@@ -1539,7 +1554,7 @@ $text-margin: 1rem;
 
 
         p {
-            font-size: 0.9rem;
+            font-size: 1rem;
             line-height: 1.4;
         }
     }
@@ -1548,7 +1563,7 @@ $text-margin: 1rem;
 
 .vision-mission-values {
     padding: rem-calc(60) 0;
-    margin-top: 3rem;
+    margin-top: 2rem;
 
 
     @include breakpoint(small only) {
