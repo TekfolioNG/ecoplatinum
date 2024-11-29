@@ -192,6 +192,25 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 1500);
   }
 
+  function lazyLoadSlide(slide) {
+    const bgImage = slide.getAttribute("data-bg");
+    if (bgImage) {
+      slide.style.backgroundImage = `url('${bgImage}')`;
+      slide.removeAttribute("data-bg");
+    }
+  }
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      if (i === index) {
+        lazyLoadSlide(slide);
+        slide.classList.add("active");
+      } else {
+        slide.classList.remove("active");
+      }
+    });
+  }
+
   
   
 });
