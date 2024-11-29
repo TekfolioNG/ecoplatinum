@@ -783,7 +783,7 @@ $product-feature-section-divider-color: $menu-underline-from-center-bg;
 
 .dropdown-content p {
     margin: 0;
-    color: #333;
+    color: #fff;
     font-size: 1rem;
     line-height: 1.5;
 }
@@ -1902,63 +1902,12 @@ $text-color: #333;
     --agro-radius: 8px;
 }
 
-.agro-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 4rem;
-    font-family: Arial, sans-serif;
-    text-align: center;
-}
-
-.agro-container {
-    background: $menu-underline-from-center-bg;
-    padding: calc(var(--agro-space) * 2);
-    max-width: 1000px;
-    width: 100%;
-    border-radius: var(--agro-radius);
-    box-shadow: 0 4px 6px rgba(255, 252, 252, 0.1);
-    margin: var(--agro-space) auto;
-}
-
-.agro-subtitle {
-    color: #f38bf8;
-    text-transform: uppercase;
-    font-size: 0.875rem;
-    margin-bottom: var(--agro-space);
-    letter-spacing: 0.05em;
-}
-
-.agro-title {
-    color: #ffffff;
-    font-size: 2rem;
-    margin-bottom: var(--agro-space);
-}
-
-.agro-content {
-    color: #ffffff;
-    line-height: 1.6;
-    text-align: left;
-
-    p {
-        margin-bottom: var(--agro-space);
-    }
-}
-
-@media (max-width: 768px) {
-    .agro-section {
-        padding: var(--agro-space);
-    }
-
-    .agro-container {
-        padding: var(--agro-space);
-        margin: calc(var(--agro-space) / 2) auto;
-    }
-}
-
 .products-section {
-    padding: 4rem;
-    margin-bottom: 4rem;
+    background-image: url('/assets/img/Coffee Beans Ecoplatinum.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .products-grid {
@@ -1967,16 +1916,18 @@ $text-color: #333;
     gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
+    margin-top: 7rem;
+    margin-bottom: 7rem;
 }
 
 .product-card {
-    background: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease;
-    display: flex;
-    flex-direction: column;
+    background: rgba(255, 255, 255, 0.8); // Slightly transparent white background
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease;
+        display: flex;
+        flex-direction: column;
 
     &:hover {
         transform: translateY(-4px);
@@ -2008,7 +1959,7 @@ $text-color: #333;
 
 .product-description {
     padding: 0 1rem;
-    color: rgba(0, 0, 0, 0.8);
+    color: #000000;
     font-size: 0.9rem;
     line-height: 1.5;
     flex-grow: 1;
