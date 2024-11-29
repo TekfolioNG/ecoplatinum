@@ -5,61 +5,36 @@ document.addEventListener("DOMContentLoaded", function () {
     yearElement.textContent = new Date().getFullYear();
   }
 
+  // Menu toggle functionality
   const menuToggle = document.querySelector(".menu-icon");
   const menu = document.querySelector(".menu");
   const nav = document.querySelector(".hover-underline-menu");
+  if (menuToggle && menu) {
+    menuToggle.addEventListener("click", (e) => {
+      e.preventDefault();
+      menu.classList.toggle("is-active");
+      menuToggle.classList.toggle("is-active");
+      menuToggle.setAttribute(
+        "aria-expanded",
+        menu.classList.contains("is-active")
+      );
+    });
+  }
 
-  // Back to top button - Create and append to body
+  // Back to top button
   const backToTopButton = document.createElement("a");
   backToTopButton.className = "back-to-top";
   backToTopButton.href = "#";
   backToTopButton.innerHTML = "<span>BACK TO TOP</span>";
   document.body.appendChild(backToTopButton);
 
-  // Variables for scroll handling
-  let lastScroll = 0;
-  let isScrolling = false;
-  let scrollTimeout;
-  const scrollThreshold = 10;
-
-  // Handle menu toggle
-  if (menuToggle && menu) {
-    menuToggle.addEventListener("click", function (e) {
-      e.preventDefault();
-      menu.classList.toggle("is-active");
-      menuToggle.classList.toggle("is-active");
-      const isExpanded = menu.classList.contains("is-active");
-      menuToggle.setAttribute("aria-expanded", isExpanded);
-    });
-  }
-
-  // Initially hide the menu
-  if (nav) {
-    nav.classList.add("nav-up");
-    window.addEventListener("scroll", handleScroll);
-
-    // Show menu when at top of page
-    window.addEventListener("scroll", function () {
-      if (window.pageYOffset === 0) {
-        nav.classList.remove("nav-up");
-        nav.classList.add("nav-down");
-      }
-    });
-  }
-
-  // Back to top button click handler
-  backToTopButton.addEventListener("click", function (e) {
-    e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+  window.addEventListener("scroll", () => {
+    backToTopButton.style.display = window.pageYOffset > 200 ? "block" : "none";
   });
 
-  // Show/hide back to top button based on scroll position
-  window.addEventListener("scroll", function () {
-    const currentScroll = window.pageYOffset;
-    backToTopButton.style.display = currentScroll > 200 ? "block" : "none";
+  backToTopButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
   // FAQ Accordion functionality
@@ -71,27 +46,20 @@ document.addEventListener("DOMContentLoaded", function () {
     if (title && content) {
       title.addEventListener("click", (e) => {
         e.preventDefault();
-
-        // Check if this item is already open
         const isOpen = title.getAttribute("aria-expanded") === "true";
 
-        // Close all accordion items
         accordionItems.forEach((otherItem) => {
           const otherTitle = otherItem.querySelector(".accordion-title");
           const otherContent = otherItem.querySelector(".accordion-content");
-
           if (otherTitle && otherContent) {
             otherTitle.setAttribute("aria-expanded", "false");
-            otherContent.style.maxHeight = "0px";
-            otherContent.style.opacity = "0";
+            otherContent.style.maxHeight = "0";
           }
         });
 
-        // Toggle current item
         if (!isOpen) {
           title.setAttribute("aria-expanded", "true");
           content.style.maxHeight = content.scrollHeight + "px";
-          content.style.opacity = "1";
         }
       });
     }
@@ -100,97 +68,27 @@ document.addEventListener("DOMContentLoaded", function () {
   // FAQ Search functionality
   const faqSearch = document.getElementById("faqSearch");
   if (faqSearch) {
-    faqSearch.addEventListener("input", function () {
-      const searchTerm = this.value.toLowerCase();
+    faqSearch.addEventListener("input", () => {
+      const searchTerm = faqSearch.value.toLowerCase();
       const accordionItems = document.querySelectorAll(".accordion-item");
-
       accordionItems.forEach((item) => {
         const text = item.textContent.toLowerCase();
-        const match = text.includes(searchTerm);
-
-        // Smooth transition for showing/hiding items
-        if (match) {
-          item.style.display = "block";
-          setTimeout(() => {
-            item.style.opacity = "1";
-          }, 10);
-        } else {
-          item.style.opacity = "0";
-          setTimeout(() => {
-            item.style.display = "none";
-          }, 300);
-        }
+        item.style.display = text.includes(searchTerm) ? "block" : "none";
       });
 
-      // Show/hide "no results" message
       const noResults = document.querySelector(".no-results");
       if (noResults) {
-        const visibleItems = Array.from(accordionItems).some(
-          (item) => item.style.display !== "none"
+        const hasVisibleItems = Array.from(accordionItems).some(
+          (item) => item.style.display === "block"
         );
-        noResults.style.display = visibleItems ? "none" : "block";
+        noResults.style.display = hasVisibleItems ? "none" : "block";
       }
     });
   }
 
-  // Image slider functionality
-  let currentIndex = 0;
+  // Image Slider with Lazy Load
   const slides = document.querySelectorAll(".hero-image-slide");
-
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.remove("active");
-      if (i === index) {
-        slide.classList.add("active");
-      }
-    });
-  }
-
-  function nextSlide() {
-    currentIndex = (currentIndex + 1) % slides.length;
-    showSlide(currentIndex);
-  }
-
-  if (slides.length > 0) {
-    showSlide(currentIndex);
-    setInterval(nextSlide, 5000);
-  }
-
-  // Combined scroll handler function for navigation behavior
-  function handleScroll() {
-    const currentScroll = window.pageYOffset;
-
-    if (!isScrolling) {
-      nav?.classList.add("nav-up");
-    }
-
-    isScrolling = true;
-    clearTimeout(scrollTimeout);
-
-    if (Math.abs(lastScroll - currentScroll) <= scrollThreshold) {
-      return;
-    }
-
-    if (nav) {
-      if (currentScroll > lastScroll && currentScroll > nav.offsetHeight) {
-        nav.classList.remove("nav-up");
-        nav.classList.add("nav-down");
-      } else if (currentScroll < lastScroll) {
-        nav.classList.remove("nav-down");
-        nav.classList.add("nav-up");
-      }
-    }
-
-    lastScroll = currentScroll;
-
-    scrollTimeout = setTimeout(function () {
-      isScrolling = false;
-      if (nav && currentScroll > nav.offsetHeight) {
-        nav.classList.remove("nav-down");
-        nav.classList.add("nav-up");
-      }
-    }, 1500);
-  }
+  let currentSlideIndex = 0;
 
   function lazyLoadSlide(slide) {
     const bgImage = slide.getAttribute("data-bg");
@@ -202,15 +100,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function showSlide(index) {
     slides.forEach((slide, i) => {
+      slide.classList.remove("active");
       if (i === index) {
         lazyLoadSlide(slide);
         slide.classList.add("active");
-      } else {
-        slide.classList.remove("active");
       }
     });
   }
 
-  
-  
+  function startSlider() {
+    setInterval(() => {
+      currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+      showSlide(currentSlideIndex);
+    }, 5000);
+  }
+
+  if (slides.length > 0) {
+    lazyLoadSlide(slides[0]);
+    slides[0].classList.add("active");
+    startSlider();
+  }
 });
