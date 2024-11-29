@@ -116,8 +116,12 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   if (slides.length > 0) {
-    lazyLoadSlide(slides[0]);
+    slides[0].style.backgroundImage = `url('${
+      slides[0].getAttribute("data-bg") || "/assets/img/Cocoa Ecoplatinum.webp"
+    }')`;
     slides[0].classList.add("active");
     startSlider();
   }
+
+  
 });
